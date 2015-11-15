@@ -54,6 +54,14 @@
     </div>
   </div>
   
+  <select id="myDropDown">
+	  <option value="0">All</option>
+	  <option value='1'>1st Quarter</option>
+	  <option value='2'>2nd Quarter</option>
+	  <option value="3">3rd Quarter</option>
+	  <option value="4">4th Quarter</option>
+  </select>
+  
   <div class="container-fluid">
     <div class="row">
 
@@ -471,9 +479,21 @@ var Amount_Total = all.reduceSum(function(d)
 	
 		dc.renderAll();
 		
+// DropDown list code
+// http://jsfiddle.net/gordonwoodhull/400wd2nd/6/
+		
+	d3.select('#myDropDown').on('change', function(){ 
+		console.log(this.value);
+		quarterDim.filter(this.value);
+		if (this.value==0) {
+			quarterDim.filter(null);
+			}
+		dc.redrawAll();
+													});
+
 
 	
-	});
+});
 
  </script> 
   
